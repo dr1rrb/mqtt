@@ -89,13 +89,13 @@ namespace IntegrationTests
 		{
 			var fooClient = await GetClientAsync();
 			var barClient = await GetClientAsync();
-
+        
 			await fooClient.ConnectAsync(new MqttClientCredentials(GetClientId()));
 			await barClient.ConnectAsync(new MqttClientCredentials(GetClientId()));
-
+        
 			var initialConnectedClients = server.ActiveClients.Count();
 			var exceptionThrown = false;
-
+        
 			try
 			{
 				//Force an exception to be thrown by publishing null message
@@ -105,9 +105,9 @@ namespace IntegrationTests
 			{
 				exceptionThrown = true;
 			}
-
+        
 			var serverSignal = new ManualResetEventSlim();
-
+        
 			while (!serverSignal.IsSet)
 			{
 				if (server.ActiveConnections == 1 && server.ActiveClients.Count() == 1)
@@ -115,14 +115,14 @@ namespace IntegrationTests
 					serverSignal.Set();
 				}
 			}
-
+        
 			serverSignal.Wait();
-
+        
 			Assert.Equal(2, initialConnectedClients);
 			Assert.True(exceptionThrown);
 			Assert.Equal(1, server.ActiveConnections);
 			Assert.Equal(1, server.ActiveClients.Count());
-
+        
 			fooClient.Dispose();
 			barClient.Dispose();
 		}
