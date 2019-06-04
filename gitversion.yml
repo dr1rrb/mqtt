@@ -1,0 +1,18 @@
+assembly-versioning-scheme: MajorMinorPatch
+mode: ContinuousDeployment
+next-version: 0.5.49
+continuous-delivery-fallback-tag: ""
+
+branches:
+  master:
+    regex: dr1rrb.master
+    increment: none
+    tag: dev
+  stable:
+    regex: dr1rrb.stable
+    tag: 
+    increment: none
+    source-branches: ['dr1rrb.master']
+
+ignore:
+  sha: []

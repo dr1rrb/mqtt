@@ -6,7 +6,7 @@
 
     <AssemblyName>System.Net.Mqtt.Server</AssemblyName>
     <RootNamespace>System.Net.Mqtt.Server</RootNamespace>
-    <PackageId>$(AssemblyName)</PackageId>
+    <PackageId>dr1rrb.$(AssemblyName)</PackageId>
     <DocumentationFile>$(IntermediateOutputPath)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 
     <Description>A lightweight and simple MQTT Server implementation written entirely in C#.</Description>
